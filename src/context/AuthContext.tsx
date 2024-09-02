@@ -1,18 +1,22 @@
-import React, { createContext, useState } from "react";
-import { Employee } from "../types/DataType";
-
-
+import React, { createContext, useEffect, useState } from "react";
+import { User } from "../types/DataType";
+type UserOrNull = User | null;
 interface AuthContextType{
-    user: Employee | unknown;
-    authenticateUser: (value: unknown )=>void;
+    user: UserOrNull;
+    authenticateUser: (value: UserOrNull )=>void;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthContextProvider = ({children}:{ children: React.ReactNode})=>{
 
-    const [user, setUser] = useState<Employee| unknown>(null);
-    const authenticateUser = (User: unknown) => setUser(User);
+    const [user, setUser] = useState<User| null>(null);
+
+    const authenticateUser = (User: UserOrNull) => setUser(User);
+    useEffect(()=> {
+        console.log("user state changed: ", user)
+
+    },[user]);
     return (
         <AuthContext.Provider
         value={{user, authenticateUser}}

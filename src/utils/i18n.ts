@@ -23,6 +23,8 @@ const resources = {
             password_required_error: 'Password is required',
             password_length_error: 'Password must have atleast 8 characters',
             password_invalid_error: 'Password entered is invalid/ not correct',
+            error:'Error !',
+            error_wrong_credentials:'Wrong credentials. Enter the correct email and password.',
         }  
     },
     fr:{
@@ -45,6 +47,8 @@ const resources = {
             password_required_error: 'Le mot de passe est obligatoire',
             password_length_error: 'Le mot de passe doit avoir au moins 8 caractères',
             password_invalid_error: 'Le mot de passe entre est invalide ou incorrect',
+            error:'Erreur !',
+            error_wrong_credentials: 'Identifiants incorrect. Entrez le bon email et mot de passe.',
         }  
 
     }
