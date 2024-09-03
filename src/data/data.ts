@@ -11,7 +11,7 @@ export const employees: Employee[] = [
     {
         id: '2',
         name: 'Gamaliel',
-        email: 'gamaliele@gmail.com',
+        email: 'gamaliel@gmail.com',
         password: '12345678',
         isAdmin: false
     },
@@ -90,32 +90,32 @@ export const inventories: Inventory[] = [
         id: '1',
         productId: '1',
         stock: {
-            'store': 1,
-            'quantity': 20
+            store: 1,
+            quantity: 20
         }
     },
     {
         id: '2',
         productId: '2',
         stock: {
-            'store': 1,
-            'quantity': 40
+            store: 1,
+            quantity: 40
         }
     },
     {
         id: '3',
         productId: '3',
         stock: {
-            'store': 2,
-            'quantity': 30
+            store: 2,
+            quantity: 30
         }
     },
     {
         id: '4',
         productId: '4',
         stock: {
-            'store': 2,
-            'quantity': 20
+            store: 2,
+            quantity: 20
         }
     }  
 ]

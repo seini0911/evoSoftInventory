@@ -63,11 +63,11 @@ export const router = createBrowserRouter([
                         element: <Dashboard/>,
                         children: [
                             {
-                                path : 'inventory',
+                                path : '',
                                 element: <InventoryList/>
                             },
                             {
-                                path : 'new/inventory',
+                                path : 'inventory',
                                 element: <NewInventory/>
                             }
                         ]
