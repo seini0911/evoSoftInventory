@@ -12,7 +12,7 @@ export interface Employee{
 }
 
 export interface Store{
-    id: string;
+    id: string|number;
     name: string;
     address: string;
 }
@@ -25,6 +25,7 @@ export interface Product{
 
 export interface Inventory{
     id: string;
+    date: string;
     productId: string;
-    stock: Record<string,number>;
+    stock: Record<string,string|number>[];
 }

@@ -12,7 +12,7 @@ const Header = () => {
         try {
             if(handleLanguageChange) handleLanguageChange(lang);
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
     return (

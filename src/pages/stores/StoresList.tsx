@@ -2,7 +2,7 @@ import React from 'react'
 import {stores} from '../../data/data';
 
 const StoresList = () => {
-    console.log(stores);
+   
     return (
     <div className='container px-4'>
         <h2 className='font-bold text-3xl mb-3'>Stores List</h2>

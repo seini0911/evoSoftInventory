@@ -19,7 +19,6 @@ export const LanguageProvider = ({children}: {children: React.ReactNode})=>{
     //watch for any language change in the application 
     useEffect(()=>{
         i18n.changeLanguage(language);
-        console.log('Changing language');
     },[language]);
     //function that hadles switching from one language to another
     const handleLanguageChange = (lang: string)=>{

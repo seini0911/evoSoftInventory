@@ -2,7 +2,6 @@ import React from 'react'
 import {products} from '../../data/data';
 
 const ProductsList = () => {
-    console.log(products);
   return (
     <div className='container px-4'>
       <h2 className='font-bold text-3xl mb-3'>Products List</h2>
