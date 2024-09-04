@@ -10,6 +10,7 @@ import EmployeesList from "../pages/employees/EmployeesList.tsx";
 import ProductsList from "../pages/products/ProductsList.tsx";
 import StoresList from "../pages/stores/StoresList.tsx";
 import NewInventory from "../pages/inventory/NewInventory.tsx";
+import UpdateInventory from "../pages/inventory/UpdateInventory.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -68,7 +69,11 @@ export const router = createBrowserRouter([
                             },
                             {
                                 path : 'inventory',
-                                element: <NewInventory/>
+                                element: <NewInventory/>,
+                            },
+                            {
+                                path:'update/inventory/:id',
+                                element: <UpdateInventory/>
                             }
                         ]
                     }

@@ -1,6 +1,9 @@
 import React from 'react'
 
-const CustomDeleteButton = () => {
+interface CustomDeleteButtonProps {
+  onClick?: () => void;
+}
+const CustomDeleteButton = ({onClick}:{onClick: CustomDeleteButtonProps}) => {
   return (
     <>      
     {/* Delete button */}

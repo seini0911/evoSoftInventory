@@ -1,88 +1,37 @@
-import React, { useContext, useState } from 'react'
-import CustomSubmitButton from '../../components/CustomSubmitButton/CustomSubmitButton'
-import {stores, products} from '../../data/data';
-import { Inventory, Product, Store } from '../../types/DataType';
-import { useTranslation } from 'react-i18next';
+import React, { useContext } from 'react'
+import { useParams } from 'react-router-dom';
+import CustomSubmitButton from '../../components/CustomSubmitButton/CustomSubmitButton';
+import { SaveInventoryFields } from '../../types/FormTypes';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { SaveInventoryFields, storeStock } from '../../types/FormTypes';
-import { HandleLocalStorage } from '../../utils/HandleLocalStorage';
+import { useTranslation } from 'react-i18next';
 import { AuthContext } from '../../context/AuthContext';
-import CustomAlert from '../../components/CustomAlert/CustomAlert';
-
-
-
-const NewInventory = () => {
+import { isDateValid, isProductSelectedValid, isStockQuantityValid } from '../../utils/InventoryFormValidators';
+import { Inventory, Product, Store } from '../../types/DataType';
+import { HandleLocalStorage } from '../../utils/HandleLocalStorage';
+import {stores, products} from '../../data/data';
+const UpdateInventory = () => {
   const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<SaveInventoryFields>();
-    const {t} = useTranslation();
-    //state to handle the saving of an inventory
-    const [isSave, setIsSave] = useState<boolean>(false);
-    
-    //get the authenticated user state 
-    const {user} = useContext(AuthContext)??{};
-    /**
-     * We store inventories in the localStorage with the email of the use
-     * so we can have a trace of who saved the inventory
-     */
-    const {getItemFromLocalStorage, setItemInLocalStorage}= HandleLocalStorage(`inventory_${user?.email}`);
+  const inventoryIdToUpdate = useParams();
+  const {t} = useTranslation();
+  //get the authenticated user state 
+  const {user} = useContext(AuthContext)??{};
+  const {getItemFromLocalStorage, setItemInLocalStorage}= HandleLocalStorage(`inventory_${user?.email}`);
+  console.log('inventory id to update is :', inventoryIdToUpdate);
 
-    const itemInLocalStorage = getItemFromLocalStorage();
-    if(itemInLocalStorage)console.log('item in locs: ', itemInLocalStorage);
-    // check if the date selected by the user is in a correct format and is not greater than the actual system date
-    const isDateValid= (date:string)=>{
-      const currentSystemDate = new Date();
-      const dateSelected = new Date(date);
-      //selected date > system current date
-      if(dateSelected> currentSystemDate) return t('error_date_is_greater');
-      if(isNaN(dateSelected.getDate())) return t('error_invalid_date');
-      return true;
-    }
-    //validate the product selected (product.id  can be stored as number or a string)
-    const isProductSelectedValid = (value: string|number)=>{
-      if(value ==='' || value === null) return t('error_select_product');
-      return true;
-    }
-    //validate the product quantity entered for a store
-    const isStockQuantityValid = (value: string | number)=>{
-      if((typeof value==='number'&& isNaN(value)) ||(typeof value==='number' && value < 0) || value==null ) return t('error_invalid_stock_quantity');
-      return true;
-    }
-    const onSaveInventory: SubmitHandler<SaveInventoryFields> = async(data)=>{
-          //create a delay to simulate a loading process
-          await new Promise((resolve)=> setTimeout(resolve, 2000));
-        const stockDataKeys = [...Object.keys(data.stocks)];
-        const stockDataValues = [...Object.values(data.stocks)];
-        const stockToSave: storeStock[] = stockDataKeys.map((value, index)=>{
-          return {
-            storeId: value,
-            quantity: stockDataValues[index].quantity
-          }
-        })
-        const newInventoryToSave : Inventory = {
-          id: (Math.floor(Math.random()*(99)) +1).toString(),
-          date: data.date,
-          productId: data.product.toString(),
-          stock: stockToSave
-        } 
-        //if there exist already an inventory in the localStorage with the user.email
-        if(itemInLocalStorage && itemInLocalStorage.length>0){
-            //we create a list to store the existing inventories and the new inventory to save
-            const newInventories = [...itemInLocalStorage, newInventoryToSave];
-            setItemInLocalStorage(newInventories);
-            console.log("New inventories : ", newInventories);
-        }else{
-          //if it is the first item to save 
-          setItemInLocalStorage([newInventoryToSave]);
-        }
-        setIsSave(true);
-   }
-    return (
+  //get the inventory to update
+  const inventoriesInLocalStorage: Inventory[] = getItemFromLocalStorage();
+  const inventoryToUpdate =  inventoriesInLocalStorage.filter((inventory)=> inventory.id.toString() === inventoryIdToUpdate.toString());
+  console.log("inventory to update is :", inventoryToUpdate)
+  const onUpdateInventory :SubmitHandler<SaveInventoryFields> = async(data)=> {
+    console.log('updating an inventory with the following data :', data);
+  } 
+  return (
     <div className='container px-8 py-8 overflow-auto'>
-        <h2 className='font-bold text-3xl text-gray-600 mb-8 text-center'>{t('new_inventory')}</h2>
-        {isSave && (
-          <CustomAlert alertType='success' message={t('inventory_saved_successfully')} />
-        )}
-        {/* form to create a new inventory  */}
-        <form onSubmit={handleSubmit(onSaveInventory)} className="font-[sans-serif] max-w-4xl mx-auto mt-4">
+      {/* update inventory
+       */}
+       <h2 className='font-bold text-3xl text-gray-600 mb-8 text-center'>{t('update_inventory')}</h2>
+       {/* form to update an inventory  */}
+       <form onSubmit={handleSubmit(onUpdateInventory)} className="font-[sans-serif] max-w-4xl mx-auto mt-4">
         <div className="grid sm:grid-cols-2 gap-6">
             {/* inventory date selection  */}
               <div className="relative flex items-center">
@@ -171,4 +120,4 @@ const NewInventory = () => {
   )
 }
 
-export default NewInventory;
+export default UpdateInventory;
