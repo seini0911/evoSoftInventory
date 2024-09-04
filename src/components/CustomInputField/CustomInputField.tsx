@@ -9,7 +9,7 @@ interface CustomInputFieldProps {
 }
 const CustomInputField = forwardRef<HTMLInputElement, CustomInputFieldProps>(function CustomInputField(props, ref){
     const {labelText, inputType, placeHolderText} = props;
-    console.log(ref, props);
+    
   return (
     <>
         <div className='mb-4'>

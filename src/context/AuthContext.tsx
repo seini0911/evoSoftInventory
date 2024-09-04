@@ -24,7 +24,6 @@ export const AuthContextProvider = ({children}:{ children: React.ReactNode})=>{
         setItemInLocalStorage(null);
     }
     useEffect(()=> {
-        console.log("user state changed: ", user)
     },[user]);
     return (
         <AuthContext.Provider

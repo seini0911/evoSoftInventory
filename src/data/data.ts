@@ -1,4 +1,8 @@
-import { Employee, Inventory, Product, Store } from "../types/DataType";
+import {
+    Employee,
+    Product,
+    Store 
+} from "../types/DataType";
 
 export const employees: Employee[] = [
     {
@@ -41,12 +45,12 @@ export const employees: Employee[] = [
 
 export const stores: Store[] = [
     {
-        id: '1',
+        id: '11',
         name: 'Ndokoti Store',
         address: 'Douala'
     },
     {
-        id: '2',
+        id: '20',
         name: 'Cite Verte Store',
         address: 'Yaounde'
     },
@@ -56,7 +60,7 @@ export const stores: Store[] = [
         address: 'Yaounde'
     },
     {
-        id: '4',
+        id: '40',
         name: 'Bonaberi Store',
         address: 'Douala'
     }
@@ -84,38 +88,3 @@ export const products: Product[] = [
         price: '4000.00'
     }
 ];
-
-export const inventories: Inventory[] = [
-    {
-        id: '1',
-        productId: '1',
-        stock: {
-            store: 1,
-            quantity: 20
-        }
-    },
-    {
-        id: '2',
-        productId: '2',
-        stock: {
-            store: 1,
-            quantity: 40
-        }
-    },
-    {
-        id: '3',
-        productId: '3',
-        stock: {
-            store: 2,
-            quantity: 30
-        }
-    },
-    {
-        id: '4',
-        productId: '4',
-        stock: {
-            store: 2,
-            quantity: 20
-        }
-    }  
-]

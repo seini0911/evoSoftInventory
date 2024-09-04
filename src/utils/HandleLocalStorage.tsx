@@ -5,7 +5,7 @@ export const HandleLocalStorage = (key: string) => {
         try {
             window.localStorage.setItem(key, JSON.stringify(value));
         } catch (error) {
-            console.log("Error in setItemInLocalStorage : ",error);
+            console.error("Error in setItemInLocalStorage : ",error);
         }
     }
     /** Function that gets an Item from the localStorage or returns undefined if the item doesnt exist */
@@ -14,7 +14,7 @@ export const HandleLocalStorage = (key: string) => {
             const item  = window.localStorage.getItem(key);
             return item ? JSON.parse(item): undefined;
         } catch (error) {
-            console.log("Error in getItemFromLocalStorage : ",error);
+            console.error("Error in getItemFromLocalStorage : ",error);
         }
     }
 

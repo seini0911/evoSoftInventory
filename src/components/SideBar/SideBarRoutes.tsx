@@ -1,10 +1,14 @@
+
+
 export interface SideBarRoute{
     name: string;
     path: string;
     icon: React.ReactElement |null;
     isAdmin: boolean;
   }
-export const sideBarRoutes: SideBarRoute[] =[
+
+
+  export const sideBarRoutes: SideBarRoute[] =[
     /**Employees routes */
     {
       name: "Dashboard",

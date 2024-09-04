@@ -10,7 +10,7 @@ interface tableDataType{
 }
 
 const EmployeesList = () => {
-    // console.log(employees);
+    
     const {t} = useTranslation();
     const tableName= t('employees_list');
     const tableHeadings = ['Name', 'Email', 'Role'];
@@ -22,8 +22,6 @@ const EmployeesList = () => {
       })
     })
 
-    // console.log('list of employees: ',employees);
-    console.log('Table data of employees: ',xisting);
   return (
     <div className='container px-4'>
       {/* <CustomTable tableName={tableName} tableHeadings={tableHeadings} tableData={tableData}/> */}

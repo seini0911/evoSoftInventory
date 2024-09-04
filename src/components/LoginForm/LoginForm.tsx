@@ -20,7 +20,7 @@ const LoginForm = () => {
     const onLogin: SubmitHandler<LoginFormFields> = async (data)=>{
         //create a delay to simulate a loading process
         await new Promise((resolve)=> setTimeout(resolve, 2000));
-        console.log(data);
+    
         //check if the form data submitted corresponds to an employee in the list of registered employees
         const employee: Employee | undefined = employeesList.find((employee)=> employee.email === data.email && employee.password === data.password);
         //if employee is found
@@ -31,10 +31,7 @@ const LoginForm = () => {
                 email: employee.email,
                 isAdmin: employee.isAdmin
             };
-            console.log(authenticateUser);
             if(authenticateUser) authenticateUser(user);
-            console.log(authenticateUser);
-            console.log("user logged in: ", JSON.stringify(user?.isAdmin));
             if(user?.isAdmin){
                 //if the user loggedIn is an admin redirect to admin dashboard
                  navigate('/dashboard/admin')
@@ -43,7 +40,6 @@ const LoginForm = () => {
                 navigate('/dashboard/employee') ;
             }
         }else{
-            console.log("employee not found");
             setWrongCredentials(true);
         }  
     }

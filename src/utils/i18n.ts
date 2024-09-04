@@ -45,7 +45,18 @@ const resources = {
             choose_product:'Choose a product',
             inventory_date:'Inventory date',
             quantity:'Quantity',
-            save_inventory:'Save Inventory'
+            save_inventory:'Save Inventory',
+            error_invalid_date: 'Invalid date',
+            error_select_date: 'Select a date',
+            error_date_is_greater:'Date selected cannot be more than today',
+            error_select_product:'Please select a product',
+            error_invalid_stock_quantity:'Invalid stock quantity',
+            saving_loading: 'Saving...',
+            inventory_saved_successfully: 'Inventory saved successfully',
+            success: 'Success !',
+            warning: 'Danger !',
+            info: 'Info !',
+            greeting: 'Hello',
         }  
     },
     fr:{
@@ -90,12 +101,22 @@ const resources = {
             choose_product:'Choisir un produit',
             inventory_date:'Date d\'inventaire',
             quantity:'Quantité',
-            save_inventory:'Enregistrer l\'inventaire'
+            save_inventory:'Enregistrer l\'inventaire',
+            error_invalid_date: 'Date invalide',
+            error_date_is_greater:'La Date selectionnée ne doit pas être plus grande que aujourd\'hui',
+            error_select_product:'Veuillez choisir un produit',
+            error_select_date: 'Choisir une date',
+            error_invalid_stock_quantity: 'Quantité de stock invalide',
+            saving_loading: 'Enregistrement en cours ...',
+            inventory_saved_successfully: 'Inventaire enregistrer avec succès',
+            success: 'Succès !',
+            warning: 'Danger !',
+            info: 'Info !',
+            greeting: 'Bonjour',
         }  
 
     }
 }
-console.log(JSON.stringify(getItemFromLocalStorage))
 i18n
 .use(initReactI18next)
 .init({
