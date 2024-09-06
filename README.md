@@ -11,7 +11,7 @@ To get started with this project,  follow these steps:
 
 1. **Clone the Repository**:  
    ```bash  
-   git clone <repository-url> 
+   git clone <https://github.com/seini0911/evoSoftInventory.git> 
 2. **Navigate to the project directory**
     ```bash
     cd <project-directory>
@@ -28,6 +28,8 @@ To start using the application follow these steps:
     ```bash
     npm run dev
 2. **Open your browser on the url indicated in your terminal**
-    http://localhost:${PORT_NUMER}.
+    http://localhost:5173.
+    
+If the port is not free, make sure to change the port in the vite config file of the project or free it in your machine 
 
 3. **Get access to the application by login in using credentials provided in data.ts file**
