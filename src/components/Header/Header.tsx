@@ -16,9 +16,9 @@ const Header = () => {
         }
     }
     return (
-    <header className='shadow-md fixed top-0 left-0 w-screen font-sans tracking-wide z-50'>
-        <section className='py-2 bg-[#007bff] text-white text-right px-10'>
-            <div className='flex flex-wrap items-center justify-between'>
+    <header className='fixed top-0 left-0 z-50 w-screen font-sans tracking-wide shadow-md'>
+        <section className='py-2 bg-[#007bff] text-white text-center items-center px-10'>
+            <div className='flex flex-wrap items-center justify-end gap-6'>
                 <p className='text-sm'>
                     <strong className="mx-3">Address:</strong>
                     Douala, Cameroon
@@ -28,7 +28,7 @@ const Header = () => {
                     691323656
                 </p>
                 <div className='flex flex-wrap'>
-                    <div className="relative font-[sans-serif] w-max mx-auto">
+                    <div className="relative  font-[sans-serif] w-max mx-auto ">
                         <button 
                             type="button"
                             onClick={showDropDown}
@@ -40,10 +40,10 @@ const Header = () => {
                         className="absolute shadow-[0_8px_19px_-7px_rgba(6,81,237,0.2)] bg-white py-2 z-[1000] min-w-full w-max divide-y max-h-96 overflow-auto">
                             <li 
                             onClick={()=>changeLanguage('en')}
-                            className='py-3 px-5 hover:bg-gray-50 text-gray-800 text-sm cursor-pointer'>{t('en_lng')}</li>
+                            className='px-5 py-3 text-sm text-gray-800 cursor-pointer hover:bg-gray-50'>{t('en_lng')}</li>
                             <li
                              onClick={()=>changeLanguage('fr')} 
-                            className='py-3 px-5 hover:bg-gray-50 text-gray-800 text-sm cursor-pointer'>{t('fr_lng')}</li>
+                            className='px-5 py-3 text-sm text-gray-800 cursor-pointer hover:bg-gray-50'>{t('fr_lng')}</li>
                         </ul>
                         } 
                      </div>

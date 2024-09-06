@@ -1,29 +1,31 @@
 import React from 'react'
 import {products} from '../../data/data';
+import { useTranslation } from 'react-i18next';
+import CustomButtonExportCSV from '../../components/CustomButtons/CustomButtonExportToCSV';
 
 const ProductsList = () => {
+  const {t} = useTranslation();
+  const tableName= t('products_list');
+  const tableHeadings = [t('code'), t('name'), t('price'), t('actions')];
   return (
     <div className='container px-4'>
-      <h2 className='font-bold text-3xl mb-3'>Products List</h2>
+      <h2 className='font-bold text-3xl mb-3'>{tableName}</h2>
+      <div className="container items-end justify-end mb-2 text-end justify-items-end">
+          <CustomButtonExportCSV fileName={tableName} headersArray={tableHeadings.filter((heading) => heading !== t('actions'))} dataContent={products}/>
+        </div>
       <div className="font-[sans-serif] overflow-x-auto">
       <table className="min-w-full bg-white">
-        <thead className="bg-blue-800 whitespace-nowrap">
+        <thead className="bg-gray-700 whitespace-nowrap">
           <tr>
-            <th className="p-4 text-left text-sm font-medium text-white">
-             Code N°
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Name
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Price
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Actions
-            </th>
+            {tableHeadings && tableHeadings.map((heading: string)=>{
+              return (
+                <th key={heading} className="p-4 text-left text-sm font-medium text-white">
+                  {heading}
+                </th>
+              )
+            })}
           </tr>
         </thead>
-
         <tbody className="whitespace-nowrap">
 
             {products && (
@@ -62,12 +64,7 @@ const ProductsList = () => {
                         </td>
                     </tr>
                 ))
-            )}
-          
-
-         
-
-          
+            )}          
         </tbody>
       </table>
     </div>
