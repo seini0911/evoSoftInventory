@@ -46,19 +46,19 @@ const LoginForm = () => {
   return (
     <>
        
-       <form className="max-w-md md:ml-auto w-full" onSubmit={handleSubmit(onLogin)}>
+       <form className="w-full max-w-md md:ml-auto" onSubmit={handleSubmit(onLogin)}>
             { wrongCredentials && (
-                <div className="bg-red-100 text-red-800 p-4 rounded-lg mb-4" role="alert">
-                    <strong className="font-bold text-sm mr-4">{t('error')}</strong>
+                <div className="p-4 mb-4 text-red-800 bg-red-100 rounded-lg" role="alert">
+                    <strong className="mr-4 text-sm font-bold">{t('error')}</strong>
                     <span className="block text-sm sm:inline max-sm:mt-2">{t('error_wrong_credentials')}</span>
                 </div>
             )}
-            <h2 className="text-gray-800 text-center text-2xl font-bold mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-center text-gray-800">
                 {t('authentication')}
             </h2>
             
              <div className='mb-4'>
-                <label className="text-gray-800 text-sm mb-2 block">{t('username')}</label>
+                <label className="block mb-2 text-sm text-gray-800">{t('username')}</label>
                 <div className="relative flex items-center"> 
                      <input 
                     {...register('email',{
@@ -71,18 +71,19 @@ const LoginForm = () => {
                         }
                     })} 
                     type="text"
-                    className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" 
+                    className="w-full px-4 py-3 text-sm text-gray-800 border border-gray-300 rounded-md outline-blue-600" 
                     placeholder={t('enter_email')}
+                    autoComplete='username'
                     required  /> 
                     <br/>
-                    <UserIcon className='size-8 w-4 h-4 absolute right-4 cursor-pointer text-gray-500'/>
+                    <UserIcon className='absolute w-4 h-4 text-gray-500 cursor-pointer size-8 right-4'/>
                  </div>
                     {errors.email &&(
-                        <div className='text-red-500 text-sm'>{errors.email.message}</div>
+                        <div className='text-sm text-red-500'>{errors.email.message}</div>
                     )}
             </div>
             <div className='mb-4'>
-                <label className="text-gray-800 text-sm mb-2 block">{t('password')}</label>
+                <label className="block mb-2 text-sm text-gray-800">{t('password')}</label>
                 <div className="relative flex items-center">
                     <input 
                     {...register('password',{
@@ -93,14 +94,15 @@ const LoginForm = () => {
                         }
                     })}  
                     type="password"
-                    className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600" 
+                    className="w-full px-4 py-3 text-sm text-gray-800 border border-gray-300 rounded-md outline-blue-600" 
                     placeholder={t('enter_password')}
+                    autoComplete='current-password'
                     required  /> 
-                    <EyeIcon className='size-8 w-4 h-4 absolute right-4 cursor-pointer text-gray-500'/>
-                    {/* <UserCircleIcon className="size-8 text-gray-500 h-4 absolute right-4 cursor-pointer" /> */}
+                    <EyeIcon className='absolute w-4 h-4 text-gray-500 cursor-pointer size-8 right-4'/>
+                    {/* <UserCircleIcon className="absolute h-4 text-gray-500 cursor-pointer size-8 right-4" /> */}
                 </div>
                     {errors.password &&(
-                        <div className='text-red-500 text-sm'>{errors.password.message}</div>
+                        <div className='text-sm text-red-500'>{errors.password.message}</div>
                     )}
             </div> 
             <CustomSubmitButton isActive={isSubmitting} buttonText={ isSubmitting ? 'Loading...':  t('login')}/>

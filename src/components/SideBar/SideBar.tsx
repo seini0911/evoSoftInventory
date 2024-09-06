@@ -15,17 +15,17 @@ const SideBar = () => {
   }
   return (
     <>
-      <nav className="bg-white shadow-lg h-screen py-7 px-6 font-[sans-serif] overflow-auto">
-        <div className="mt-12">
-          <h2 className='font-bold text-xl mb-5'>{t('greeting')} <br/> {user?.name} </h2>
-          <h6 className="text-blue-600 text-sm font-bold px-4">Information</h6>
+      <nav className="bg-white shadow-lg h-screen py-2 px-8 font-[sans-serif] overflow-auto">
+        <div className="mt-2">
+          <h2 className='mb-5 text-xl font-bold'>{t('greeting')} <br/> {user?.name} </h2>
+          <h6 className="px-4 text-sm font-bold text-blue-600">Information</h6>
           <ul className="mt-3">
             {userRoutes && userRoutes.map((route: SideBarRoute)=>(
               <li key={route.name}>
               <Link to={route.path}
-                className="text-black hover:text-blue-600 text-sm flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                className="flex items-center px-4 py-3 text-sm text-black transition-all rounded hover:text-blue-600 hover:bg-blue-50">
                 { route.icon }
-                <span>{route.name}</span>
+                <span>{t(route.key)}</span>
               </Link>
               <hr/>
             </li>
@@ -33,11 +33,11 @@ const SideBar = () => {
           </ul>
         </div>
         <div className="mt-6">
-          <h6 className="text-blue-600 text-sm font-bold px-4">Actions</h6>
+          <h6 className="px-4 text-sm font-bold text-blue-600">Actions</h6>
           <ul className="mt-3">
             <li>
               <a onClick={logoutUser}
-                className="cursor-pointer text-black hover:text-blue-600 text-sm flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                className="flex items-center px-4 py-3 text-sm text-black transition-all rounded cursor-pointer hover:text-blue-600 hover:bg-blue-50">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
                   viewBox="0 0 6.35 6.35">
                   <path

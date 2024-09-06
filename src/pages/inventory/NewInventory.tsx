@@ -77,16 +77,16 @@ const NewInventory = () => {
    }
     return (
     <div className='container px-8 py-8 overflow-auto'>
-        <h2 className='font-bold text-3xl text-gray-600 mb-8 text-center'>{t('new_inventory')}</h2>
+        <h2 className='mb-8 text-3xl font-bold text-center text-gray-600'>{t('new_inventory')}</h2>
         {isSave && (
           <CustomAlert alertType='success' message={t('inventory_saved_successfully')} />
         )}
         {/* form to create a new inventory  */}
         <form onSubmit={handleSubmit(onSaveInventory)} className="font-[sans-serif] max-w-4xl mx-auto mt-4">
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2">
             {/* inventory date selection  */}
               <div className="relative flex items-center">
-                <label className="text-gray-400 w-36 text-sm mr-2">{t('inventory_date')} </label>
+                <label className="mr-2 text-sm text-gray-400 w-36">{t('inventory_date')} </label>
                   <div className='flex flex-col w-full'>
                       <input
                       {...register("date",{
@@ -97,14 +97,14 @@ const NewInventory = () => {
                       className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent text-black w-full text-sm border outline-[#007bff] rounded transition-all" />
                       {errors.date &&(
                         <div 
-                        className='text-red-500 text-sm'>{errors.date.message}
+                        className='text-sm text-red-500'>{errors.date.message}
                         </div>
                       )}
                   </div>
               </div>
               {/* product selection  */}
               <div className="relative flex items-center">
-                <label className="text-gray-400 w-36 text-sm mr-2">
+                <label className="mr-2 text-sm text-gray-400 w-36">
                     {t('select_product')}
                 </label>
                 <div className='flex flex-col w-full '>
@@ -122,7 +122,7 @@ const NewInventory = () => {
                   </select>
                   {errors.product &&(
                       <div 
-                      className='text-red-500 text-sm'>{errors.product.message}
+                      className='text-sm text-red-500'>{errors.product.message}
                       </div>
                   )}
                 </div>
@@ -131,7 +131,7 @@ const NewInventory = () => {
             {stores && stores.map((store: Store) => (
               <div key={store.id}>
                  <div className="relative flex items-center">
-                    <label className="text-gray-400 w-36 text-sm mr-2">
+                    <label className="mr-2 text-sm text-gray-400 w-36">
                       {t('select_store')}
                     </label>
                   <input  
@@ -139,8 +139,9 @@ const NewInventory = () => {
                   placeholder={store.name as string}
                       className="px-4 py-3 bg-[#f0f1f2] focus:bg-transparent text-black w-full text-sm border outline-[#007bff] rounded transition-all" disabled/>
                 </div>
+                <br /> 
                 <div className="relative flex items-center">
-                  <label className="text-gray-400 w-36 text-sm mr-2">
+                  <label className="mr-2 text-sm text-gray-400 w-36">
                     {t('quantity')}
                   </label>
                     {/* store stock/quantity */}
@@ -157,11 +158,11 @@ const NewInventory = () => {
                         <br/>
                         {errors.stocks &&(
                             <div 
-                            className='text-red-500 text-sm'>{errors.stocks.message}
+                            className='text-sm text-red-500'>{errors.stocks.message}
                             </div>
                         )}
                     </div>
-                 </div> 
+                 </div>
               </div>
             ))}
         </div>

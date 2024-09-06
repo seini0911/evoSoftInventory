@@ -1,7 +1,7 @@
 
-
 export interface SideBarRoute{
     name: string;
+    key:string;
     path: string;
     icon: React.ReactElement |null;
     isAdmin: boolean;
@@ -12,6 +12,7 @@ export interface SideBarRoute{
     /**Employees routes */
     {
       name: "Dashboard",
+      key: "dashboard",
       path: "/dashboard/employee",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 512.003 512.003">
@@ -26,10 +27,11 @@ export interface SideBarRoute{
     },
     {
       name: "Inventory",
+      key: "inventory",
       path: "/dashboard/employee/inventory",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 510 510">
-      <g fill-opacity=".9">
+      <g fillOpacity=".9">
         <path
           d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm0 459c-112.2 0-204-91.8-204-204S142.8 51 255 51s204 91.8 204 204-91.8 204-204 204z"
           data-original="#000000" />
@@ -42,6 +44,7 @@ export interface SideBarRoute{
     /** Admin routes */
     {
       name: "Dashboard",
+      key: "dashboard",
       path: "/dashboard/admin",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 512.003 512.003">
@@ -56,10 +59,11 @@ export interface SideBarRoute{
     },
     {
       name: "Inventory",
+      key: "inventory",
       path: "/dashboard/admin/inventory",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 510 510">
-      <g fill-opacity=".9">
+      <g fillOpacity=".9">
         <path
           d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm0 459c-112.2 0-204-91.8-204-204S142.8 51 255 51s204 91.8 204 204-91.8 204-204 204z"
           data-original="#000000" />
@@ -70,6 +74,7 @@ export interface SideBarRoute{
     },
     {
       name: "Employees",
+      key: "employees",
       path: "/dashboard/admin/employees",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 512 512">
@@ -81,6 +86,7 @@ export interface SideBarRoute{
     },
     {
       name: "Stores",
+      key: "stores",
       path: "/dashboard/admin/stores",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 511.877 511.877">
@@ -92,6 +98,7 @@ export interface SideBarRoute{
     },
     {
       name: "Products",
+      key: "products",
       path: "/dashboard/admin/products",
       icon: <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-[18px] h-[18px] mr-4"
       viewBox="0 0 24 24">

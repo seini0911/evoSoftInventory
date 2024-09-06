@@ -1,52 +1,33 @@
 import React from 'react'
 import {employees} from '../../data/data';
 import { useTranslation } from 'react-i18next';
-import CustomTable from '../../components/CustomTable/CustomTable';
-import { Employee } from '../../types/DataType';
+import CustomButtonExportCSV from '../../components/CustomButtons/CustomButtonExportToCSV';
 
-interface tableDataType{
-  key: string;
-  values: string[];
-}
-
-const EmployeesList = () => {
-    
+const EmployeesList = () => {    
     const {t} = useTranslation();
     const tableName= t('employees_list');
-    const tableHeadings = ['Name', 'Email', 'Role'];
-    let tableData: tableDataType[];
-   
-    const xisting = tableHeadings.forEach((heading:string)=>{
-      employees.map((employee)=>{
-        return({key : heading, values :[employee.id, employee.name, employee.email]})
-      })
-    })
+    const tableHeadings = [t('name'), t('email'), t('role'), t('actions')];
 
   return (
     <div className='container px-4'>
-      {/* <CustomTable tableName={tableName} tableHeadings={tableHeadings} tableData={tableData}/> */}
-        {/* <h2 className='font-bold text-3xl mb-3'>Employees List</h2>
+        <h2 className='font-bold text-3xl mb-3'>{tableName}</h2> 
+        <div className="container items-end justify-end mb-2 text-end justify-items-end">
+          <CustomButtonExportCSV fileName={tableName} headersArray={tableHeadings.filter((heading) => heading !== t('actions'))} dataContent={employees}/>
+        </div>
       <div className="font-[sans-serif] overflow-x-auto">
       <table className="min-w-full bg-white">
-        <thead className="bg-blue-800 whitespace-nowrap">
+        <thead className="bg-gray-700 whitespace-nowrap">
           <tr>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Name
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Email
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Role
-            </th>
-            <th className="p-4 text-left text-sm font-medium text-white">
-              Actions
-            </th>
+            {tableHeadings && tableHeadings.map((heading: string)=>{
+              return (
+                <th key={heading} className="p-4 text-left text-sm font-medium text-white">
+                  {heading}
+                </th>
+              )
+            })}
           </tr>
         </thead>
-
         <tbody className="whitespace-nowrap">
-
             {employees && (
                 employees.map((employee) => (
                     <tr className="even:bg-blue-50">
@@ -86,7 +67,7 @@ const EmployeesList = () => {
             )}
         </tbody>
       </table>
-    </div> */}
+    </div> 
     </div>
   )
 }
